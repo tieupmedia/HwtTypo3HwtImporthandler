@@ -1,0 +1,36 @@
+<f:be.container>
+    <div class="typo3-fullDoc">
+        <div id="typo3-docheader" class="module-docheader">
+            <div class="typo3-docheader-functions module-docheader-bar module-docheader-bar-navigation">
+                <div class="left module-docheader-bar-column-left">
+                    <f:be.buttons.csh />
+
+                    <f:be.menus.actionMenu>
+                        <f:be.menus.actionMenuItem label="Start" controller="Backend" action="start" />
+                        <f:comment>
+                        <f:be.menus.actionMenuItem label="Action 2" controller="Backend" action="action2" />
+                        </f:comment>
+                    </f:be.menus.actionMenu>
+                </div>
+                <div class="right module-docheader-bar-column-right">
+                    <f:be.pagePath />
+                    <f:be.pageInfo />
+                </div>
+            </div>
+            <div class="typo3-docheader-buttons module-docheader-bar module-docheader-bar-buttons">
+                <div class="left">
+                </div>
+                <div class="right module-docheader-bar-column-right">
+                    <div class="buttongroup btn-toolbar">
+                        <f:be.buttons.shortcut />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="x_typo3-docbody" class="module-body">
+            <div id="typo3-inner-docbody">
+                <f:render section="main" />
+            </div>
+        </div>
+    </div>
+</f:be.container>

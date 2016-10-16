@@ -1,0 +1,44 @@
+# General module settings
+module.hwt_importhandler.settings {
+
+}
+
+# Module presets
+module.hwt_importhandler.settings.preset.demoNone {
+	name = Demo None
+
+	configurator {
+	}
+
+	importer {
+        1.class = Hwt\HwtImporthandler\Importer\DemoNoneImporter
+        1.config {
+            #continue = 1
+        }
+        2.class = Hwt\HwtImporthandler\Importer\DemoNoneImporter
+        2.config {
+            continue = 1
+        }
+        3.class = Hwt\HwtImporthandler\Importer\DemoNoneImporter
+	}
+}
+
+module.hwt_importhandler.settings.preset.demoUpload {
+	name = Demo Upload
+
+	configurator {
+        1.class = Hwt\HwtImporthandler\Configurator\LocalFileConfigurator
+        1.config {
+            importPath = uploads/tx_hwtimporthandler/imports/
+        }
+
+        2.class = Hwt\HwtImporthandler\Configurator\UploadFileConfigurator
+	}
+
+	importer {
+        1.class = Hwt\HwtImporthandler\Importer\DemoUploadImporter
+        1.config {
+            uploadPath = uploads/tx_hwtimporthandler/imports/
+        }
+	}
+}

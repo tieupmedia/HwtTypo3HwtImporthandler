@@ -1,0 +1,6 @@
+0.0.2-alpha 2016-10-11 Heiko Westermann <hwt3@gmx.de>
+	* First public release
+
+0.0.1-experimental 2015-08-10 Heiko Westermann <hwt3@gmx.de>
+	* Initial setup: This is an early version of the extension in development.
+      Some major functions and features are missing!

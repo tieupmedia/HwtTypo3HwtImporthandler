@@ -1,0 +1,27 @@
+<f:layout name="Backend/Backend"/>
+
+<f:section name="main">
+    <h1><f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:startHeader" /></h1>
+    <p>
+        <b>
+            <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.start" />
+        </b>
+        <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.configure" />
+        <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.import" />
+    </p>
+    <f:flashMessages renderMode="div" />
+
+    <f:form enctype="multipart/form-data" method="post" controller="Backend" action="configure">
+        <div class="divider"></div><br />
+
+        <div class="form-inline form-inline-spaced">
+        <div class="form-group">
+            <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:start.label.presets" />
+            <f:form.select name="preset" options="{presets}" optionValueField="key" optionLabelField="name" class="form-control input-sm" />
+        </div>
+        </div>
+
+        <br /><div class="divider"></div><br />
+        <f:form.submit name="configure" value="{f:translate(key: 'LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:button.start')}" />
+    </f:form>
+</f:section>

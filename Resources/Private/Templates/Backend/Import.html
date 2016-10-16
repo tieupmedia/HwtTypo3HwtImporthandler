@@ -1,0 +1,30 @@
+<f:layout name="Backend/Backend"/>
+
+<f:section name="main">
+    <h1><f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:importHeader" /></h1>
+    <p>
+        <b>
+            <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.start" />
+            <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.configure" />
+            <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.import" />
+        </b>
+    </p>
+    <f:flashMessages renderMode="div" />
+    
+    <f:if condition="{continue}">
+        <f:then>
+            <div class="divider"></div><br />
+            <f:form enctype="multipart/form-data" method="post" controller="Backend" action="import">
+                <f:form.hidden name="preset" value="{preset}" />
+                <f:form.hidden name="importer" value="{continue}" />
+                <f:form.submit name="continue" value="{f:translate(key: 'LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:button.continue')}" />
+            </f:form>
+        </f:then>
+        <f:else>
+            <div class="divider"></div><br />
+            <f:link.action action="start" class="t3-button">
+                <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:button.restart" />
+            </f:link.action>
+        </f:else>
+    </f:if>
+</f:section>

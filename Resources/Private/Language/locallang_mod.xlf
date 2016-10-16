@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-08-12T10:54:12Z" product-name="hwt_importhandler">
+		<header/>
+		<body>
+			<trans-unit id="mlang_tabs_tab" xml:space="preserve">
+				<source>Importhandler</source>
+			</trans-unit>
+
+            <!-- headers -->
+			<trans-unit id="startHeader" xml:space="preserve">
+				<source>Start Import</source>
+			</trans-unit>
+			<trans-unit id="configureHeader" xml:space="preserve">
+				<source>Configure Import</source>
+			</trans-unit>
+            <trans-unit id="importHeader" xml:space="preserve">
+				<source>Import Data</source>
+			</trans-unit>
+
+            <!-- steps -->
+            <trans-unit id="step.start" xml:space="preserve">
+				<source>Start &gt;</source>
+			</trans-unit>
+            <trans-unit id="step.configure" xml:space="preserve">
+				<source>Configure &gt;</source>
+			</trans-unit>
+            <trans-unit id="step.import" xml:space="preserve">
+				<source>Import</source>
+			</trans-unit>
+
+            <!-- buttons -->
+            <trans-unit id="button.start" xml:space="preserve">
+				<source>Start</source>
+			</trans-unit>
+            <trans-unit id="button.import" xml:space="preserve">
+				<source>Start Import</source>
+			</trans-unit>
+            <trans-unit id="button.abort" xml:space="preserve">
+				<source>Abort import</source>
+			</trans-unit>
+            <trans-unit id="button.continue" xml:space="preserve">
+				<source>Continue</source>
+			</trans-unit>
+            <trans-unit id="button.restart" xml:space="preserve">
+				<source>Restart</source>
+			</trans-unit>
+
+            <!-- form labels -->
+            <trans-unit id="start.label.presets" xml:space="preserve">
+				<source>Select a preset:</source>
+			</trans-unit>
+            <trans-unit id="configuration.label.localFile" xml:space="preserve">
+				<source>Select Local File:</source>
+			</trans-unit>
+            <trans-unit id="configuration.label.uploadFile" xml:space="preserve">
+				<source>Select File to Upload:</source>
+			</trans-unit>
+            <trans-unit id="configuration.label.nothingToConfigure" xml:space="preserve">
+				<source>Nothing to configure. Start the import next.</source>
+			</trans-unit>
+
+            <!-- messages -->
+			<trans-unit id="start.errorNoPreset" xml:space="preserve">
+				<source>No configuration preset selected!</source>
+			</trans-unit>
+            <trans-unit id="import.errorAborted" xml:space="preserve">
+				<source>An error aborted the import!</source>
+			</trans-unit>
+            <trans-unit id="import.infoCompleted" xml:space="preserve">
+				<source>Import completed</source>
+			</trans-unit>
+            <trans-unit id="import.noticeImportedFileHeader" xml:space="preserve">
+				<source>The file was imported: </source>
+			</trans-unit>
+            <trans-unit id="import.errorNoFile" xml:space="preserve">
+				<source>Please upload a file! This demo doesn't support selection of local files until now!</source>
+			</trans-unit>
+            <trans-unit id="import.errorNoFileHeader" xml:space="preserve">
+				<source>No file could be imported!</source>
+			</trans-unit>
+            <trans-unit id="import.noticeEmptyImport" xml:space="preserve">
+				<source>Noting to import in this demo preset.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

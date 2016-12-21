@@ -50,7 +50,7 @@ class LocalFileConfigurator extends AbstractConfigurator {
         if ( $handle = opendir($path) ) {
             while ( ($file=readdir($handle)) !== false) {
                 if ( is_file($path . $file) ) {
-                    $return[] = $file;
+                    $return[$file] = $file;
                 } 
             }
             closedir($handle);

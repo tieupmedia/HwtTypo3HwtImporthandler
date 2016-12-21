@@ -1,4 +1,4 @@
-master-alpha 2016-12-21 Heiko Westermann <hwt3@gmx.de>
+0.0.3-alpha 2016-12-21 Heiko Westermann <hwt3@gmx.de>
     * Task: Updated demo upload importer
     * Bugfix: Corrected LocalFileConfigurator input value, to be readable in importer
     * ToDo: Added request parameter to component initialisation

@@ -70,6 +70,9 @@
             <trans-unit id="import.infoCompleted" xml:space="preserve">
 				<source>Import completed</source>
 			</trans-unit>
+            <trans-unit id="import.infoImportedLocalFileHeader" xml:space="preserve">
+				<source>The local file was selected: </source>
+			</trans-unit>
             <trans-unit id="import.noticeImportedFileHeader" xml:space="preserve">
 				<source>The file was imported: </source>
 			</trans-unit>

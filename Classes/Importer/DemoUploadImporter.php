@@ -38,6 +38,16 @@ class DemoUploadImporter extends AbstractImporter {
         $hasError = false;
         
         // ToDo: Validate configuration
+        if ( $this->request->hasArgument('localfile') ) {
+            $this->globals['flashMessages']->enqueue(
+                new \TYPO3\CMS\Core\Messaging\FlashMessage (
+                    $GLOBALS['LANG']->sL($this->request->getArgument('localfile') . ' in ' . $this->settings['localPath']),
+                    $GLOBALS['LANG']->sL($this->globals['locallangPath'] . 'import.noticeImportedLocalFileHeader'),
+                    \TYPO3\CMS\Core\Messaging\FlashMessage::INFO,
+                    false
+                )
+            );    
+        }
 
         // Upload file if requested
         if (

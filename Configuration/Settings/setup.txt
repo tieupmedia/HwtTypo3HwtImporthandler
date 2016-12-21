@@ -45,6 +45,7 @@ module.tx_hwtimporthandler.settings.preset.demoUpload {
         1.class = Hwt\HwtImporthandler\Importer\DemoUploadImporter
         1.config {
             uploadPath = uploads/tx_hwtimporthandler/imports/
+            localPath = uploads/tx_hwtimporthandler/imports/
         }
 	}
 }

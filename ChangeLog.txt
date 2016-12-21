@@ -1,3 +1,6 @@
+master-alpha 2016-12-21 Heiko Westermann <hwt3@gmx.de>
+	* Bugfix: Corrected loading of module typoscript configurations
+
 0.0.2-alpha 2016-10-11 Heiko Westermann <hwt3@gmx.de>
 	* First public release
 

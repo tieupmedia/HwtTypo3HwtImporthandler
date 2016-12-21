@@ -5,7 +5,7 @@ namespace Hwt\HwtImporthandler\Controller;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2015-2016 Heiko Westermann <hwt3@gmx.de>
+ *  (c) 2016 Heiko Westermann <hwt3@gmx.de>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -34,10 +34,10 @@ namespace Hwt\HwtImporthandler\Controller;
  */
 class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
-    // TypoScript settings
-    protected $settings = array();
+    // Module configuration
+    protected $configuration;
     // ModuleTS settings
-    protected $moduleSettings = array();
+    protected $settings;
     // id of selected page
     protected $id;
     // info of selected page
@@ -50,14 +50,9 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         //$this->pageinfo = \TYPO3\CMS\Backend\Utility\BackendUtility::readPageAccess($this->id, $GLOBALS['BE_USER']->getPagePermsClause(1));
  
         $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\BackendConfigurationManager');
- 
-        $this->settings = $configurationManager->getConfiguration(
-            $this->request->getControllerExtensionName(),
-            $this->request->getPluginName()
-        );
-        
-        // get moduleTs
-        $this->moduleSettings = $this->getModuleTs();
+        $this->configuration = $configurationManager->getConfiguration();
+        // get module settings
+        $this->settings = $this->configuration['settings'];
     }
 
     /**
@@ -70,7 +65,7 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'flashMessages' => $this->controllerContext->getFlashMessageQueue(),
             'locallangPath' => $this->locallangPath,
             //'pageId' => $this->id,
-            //'moduleSettings' => $this->moduleSettings,
+            //'settings' => $this->settings,
         );
 
 
@@ -90,7 +85,7 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'flashMessages' => $this->controllerContext->getFlashMessageQueue(),
             'locallangPath' => $this->locallangPath,
             //'pageId' => $this->id,
-            //'moduleSettings' => $this->moduleSettings,
+            //'settings' => $this->settings,
         );
 
         $preset = false;
@@ -101,8 +96,8 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $preset = $this->request->getArgument('preset');
 
             // run all configurators
-            if (is_array($this->moduleSettings['preset.'][$preset]['configurator.'])) {
-                foreach ($this->moduleSettings['preset.'][$preset]['configurator.'] as $configuratorSetting) {
+            if (is_array($this->settings['preset.'][$preset]['configurator.'])) {
+                foreach ($this->settings['preset.'][$preset]['configurator.'] as $configuratorSetting) {
                     $configuratorClass = $configuratorSetting['class'];
 
                     $configurator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance($configuratorClass);
@@ -147,7 +142,7 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'flashMessages' => $this->controllerContext->getFlashMessageQueue(),
             'locallangPath' => $this->locallangPath,
             //'pageId' => $this->id,
-            //'moduleSettings' => $this->moduleSettings,
+            //'settings' => $this->settings,
         );
 
         $preset = false;
@@ -166,8 +161,8 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $enable = false;
 
             // run all importers
-            if (is_array($this->moduleSettings['preset.'][$preset]['importer.'])) {
-                foreach ($this->moduleSettings['preset.'][$preset]['importer.'] as $importerKey => $importerSetting) {
+            if (is_array($this->settings['preset.'][$preset]['importer.'])) {
+                foreach ($this->settings['preset.'][$preset]['importer.'] as $importerKey => $importerSetting) {
 
                     // enable importing on intial call or if importer to continue matches
                     if ( (!$enable) && 
@@ -233,28 +228,12 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     protected function getPresets() {
         $presets = false;
 
-        foreach ($this->moduleSettings['preset.'] as $key => $config) {
+        foreach ($this->settings['preset'] as $key => $config) {
             $preset = new \stdClass();
             $preset->key = $key;
             $preset->name = $config['name'];
             $presets[] = $preset;
         }
         return $presets;
-    }
-    
-    
-    
-    /*
-     * get settings
-     * ToDo: make extendable
-     */
-    protected function getModuleTs() {
-        $return = false;
-        $settings = file_get_contents(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('typo3conf/ext/hwt_importhandler/Configuration/Settings/setup.txt'));
-        if ($settings) {
-            $tsParser =   \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\TypoScript\\Parser\\TypoScriptParser');
-            $tsParser->parse($settings);
-        }
-        return $tsParser->setup['module.']['hwt_importhandler.']['settings.'];
     }
 }

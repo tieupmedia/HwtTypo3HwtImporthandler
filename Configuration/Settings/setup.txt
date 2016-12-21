@@ -1,10 +1,16 @@
 # General module settings
-module.hwt_importhandler.settings {
-
+module.tx_hwtimporthandler {
+    settings {
+    }
+    view {
+        templateRootPaths.0 = EXT:hwt_importhandler/Resources/Private/Templates/
+        partialRootPaths.0 = EXT:hwt_importhandler/Resources/Private/Partials/
+        layoutRootPaths.0 = EXT:hwt_importhandler/Resources/Private/Layouts/
+    }
 }
 
 # Module presets
-module.hwt_importhandler.settings.preset.demoNone {
+module.tx_hwtimporthandler.settings.preset.demoNone {
 	name = Demo None
 
 	configurator {
@@ -23,7 +29,7 @@ module.hwt_importhandler.settings.preset.demoNone {
 	}
 }
 
-module.hwt_importhandler.settings.preset.demoUpload {
+module.tx_hwtimporthandler.settings.preset.demoUpload {
 	name = Demo Upload
 
 	configurator {

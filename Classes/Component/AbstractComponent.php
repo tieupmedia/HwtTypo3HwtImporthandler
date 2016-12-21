@@ -36,11 +36,13 @@ namespace Hwt\HwtImporthandler\Component;
 abstract class AbstractComponent {
     protected $settings;
     protected $globals;
+    protected $request;
 
-    public function init(&$globals, $settings=false) {
+    public function init(&$globals, $request, $settings=false) {
         //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($globals);
 
         $this->globals = $globals;
+        $this->request = $request;
         $this->settings = $settings;
     }
 

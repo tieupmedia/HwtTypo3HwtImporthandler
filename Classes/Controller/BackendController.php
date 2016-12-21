@@ -105,7 +105,7 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                         /*if ( is_array($configuratorSetting['config']) ) {
                             $configurator->init($configuratorSetting['config']);
                         }*/
-                        $configurator->init($this->globals, $configuratorSetting['config']);
+                        $configurator->init($this->globals, $this->request, $configuratorSetting['config']);
                         $configurations[] = $configurator->run();
                     }
                     //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($configurator);
@@ -184,7 +184,7 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                                 $importer->init($importerSetting['config']);
                             }*/
                             //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->globals);
-                            $importer->init($this->globals, $importerSetting['config']);
+                            $importer->init($this->globals, $this->request, $importerSetting['config']);
                             $importer->run();
                         }
                         if (!$importerSetting['config']['continue']) {

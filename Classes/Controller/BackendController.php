@@ -96,16 +96,16 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $preset = $this->request->getArgument('preset');
 
             // run all configurators
-            if (is_array($this->settings['preset.'][$preset]['configurator.'])) {
-                foreach ($this->settings['preset.'][$preset]['configurator.'] as $configuratorSetting) {
+            if (is_array($this->settings['preset'][$preset]['configurator'])) {
+                foreach ($this->settings['preset'][$preset]['configurator'] as $configuratorSetting) {
                     $configuratorClass = $configuratorSetting['class'];
 
                     $configurator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance($configuratorClass);
                     if ( is_a($configurator, 'Hwt\HwtImporthandler\Configurator\AbstractConfigurator') ) {
-                        /*if ( is_array($configuratorSetting['config.']) ) {
-                            $configurator->init($configuratorSetting['config.']);
+                        /*if ( is_array($configuratorSetting['config']) ) {
+                            $configurator->init($configuratorSetting['config']);
                         }*/
-                        $configurator->init($this->globals, $configuratorSetting['config.']);
+                        $configurator->init($this->globals, $configuratorSetting['config']);
                         $configurations[] = $configurator->run();
                     }
                     //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($configurator);
@@ -161,8 +161,8 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $enable = false;
 
             // run all importers
-            if (is_array($this->settings['preset.'][$preset]['importer.'])) {
-                foreach ($this->settings['preset.'][$preset]['importer.'] as $importerKey => $importerSetting) {
+            if (is_array($this->settings['preset'][$preset]['importer'])) {
+                foreach ($this->settings['preset'][$preset]['importer'] as $importerKey => $importerSetting) {
 
                     // enable importing on intial call or if importer to continue matches
                     if ( (!$enable) && 
@@ -180,14 +180,14 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
                         $importer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance($importerClass);
                         if ( is_a($importer, 'Hwt\HwtImporthandler\Importer\AbstractImporter') ) {
-                            /*if ( is_array($importerSetting['config.']) ) {
-                                $importer->init($importerSetting['config.']);
+                            /*if ( is_array($importerSetting['config']) ) {
+                                $importer->init($importerSetting['config']);
                             }*/
                             //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->globals);
-                            $importer->init($this->globals, $importerSetting['config.']);
+                            $importer->init($this->globals, $importerSetting['config']);
                             $importer->run();
                         }
-                        if (!$importerSetting['config.']['continue']) {
+                        if (!$importerSetting['config']['continue']) {
                             $break = true;
                         }
                     }

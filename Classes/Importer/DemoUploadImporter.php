@@ -83,27 +83,10 @@ class DemoUploadImporter extends AbstractImporter {
 
         if ($success) {
             // Do next operation
-        }
-
-        if (!$success) {
-            $this->globals['flashMessages']->enqueue(
-                new \TYPO3\CMS\Core\Messaging\FlashMessage (
-                    $GLOBALS['LANG']->sL($this->globals['locallangPath'] . 'import.errorAborted'),
-                    $GLOBALS['LANG']->sL($this->globals['locallangPath'] . 'import.errorAbortedHeader'),
-                    \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR,
-                    false
-                )
-            );
-            $hasError = true;
         } else {
-            $this->globals['flashMessages']->enqueue(
-                new \TYPO3\CMS\Core\Messaging\FlashMessage (
-                    $GLOBALS['LANG']->sL($this->globals['locallangPath'] . 'import.infoCompleted'),
-                    $GLOBALS['LANG']->sL($this->globals['locallangPath'] . 'import.infoCompletedHeader'),
-                    \TYPO3\CMS\Core\Messaging\FlashMessage::INFO,
-                    false
-                )
-            );
+            $hasError = true;
         }
+        
+        return $success;
     }
 }

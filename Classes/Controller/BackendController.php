@@ -145,26 +145,38 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             //'settings' => $this->settings,
         );
 
-        $preset = false;
+        // Reset view params
+        $preset = $hasError = false;
+        // Init variables for importer controlling
         $continue = $break = false;
+        $success = true;
+
 
         /*
-         * Do inport
+         * Do import
          * - if it is an initial import call
          * - or if an import should continue
          */
-        if ( ( ($this->request->hasArgument('continue') && $this->request->hasArgument('importer')) ||
-              $this->request->hasArgument('import') ) && $this->request->hasArgument('preset')
+        if ( ( 
+                ($this->request->hasArgument('continue') && $this->request->hasArgument('importer')) ||
+                $this->request->hasArgument('import') 
+             ) && $this->request->hasArgument('preset')
            ) {
+                // if correct arguments are submitted
 
             $preset = $this->request->getArgument('preset');
+            
+            // disable execution of importers by default
             $enable = false;
 
-            // run all importers
-            if (is_array($this->settings['preset'][$preset]['importer'])) {
+            // lopp through all configured importers
+            if ( is_array($this->settings['preset'][$preset]['importer']) ) {
+                //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->settings['preset'][$preset]['importer']);
+
+                $last = array_pop(array_keys($this->settings['preset'][$preset]['importer']));
                 foreach ($this->settings['preset'][$preset]['importer'] as $importerKey => $importerSetting) {
 
-                    // enable importing on intial call or if importer to continue matches
+                    // enable importing on first call or if importer param to continue matches the current key
                     if ( (!$enable) && 
                          ($this->request->hasArgument('import') || ($this->request->getArgument('importer')==$importerKey)) ) {
                         $enable = true;
@@ -172,24 +184,53 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
                     if ($enable) {
                         if ($break) {
+                                // if $break was set in last loop, just define with which importer
+                                //to go ahead next an exit for this call
                             $continue = $importerKey;
                             break;
-                        }
+                        } else {
+                                // run importer regular
+                            $importerClass = $importerSetting['class'];
 
-                        $importerClass = $importerSetting['class'];
+                            $importer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance($importerClass);
+                            if ( is_a($importer, 'Hwt\HwtImporthandler\Importer\AbstractImporter') ) {
+                                /*if ( is_array($importerSetting['config']) ) {
+                                    $importer->init($importerSetting['config']);
+                                }*/
+                                //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->globals);
+                                $importer->init($this->globals, $this->request, $importerSetting['config']);
+                                $success = $importer->run();
+                                
+                                // if importer run returned false, exit now
+                                if (!$success) {
+                                    $this->controllerContext->getFlashMessageQueue()->enqueue(
+                                        new \TYPO3\CMS\Core\Messaging\FlashMessage (
+                                            $GLOBALS['LANG']->sL($this->locallangPath . 'import.errorAborted'),
+                                            $GLOBALS['LANG']->sL($this->locallangPath . 'import.errorAbortedHeader'),
+                                            \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR,
+                                            false
+                                        )
+                                    );
+                                    $hasError = true;
+                                    break;
+                                }
+                            }
+                            if (!$importerSetting['config']['continue']) {
+                                $break = true;
+                            }
+                        }
+                    }
 
-                        $importer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance($importerClass);
-                        if ( is_a($importer, 'Hwt\HwtImporthandler\Importer\AbstractImporter') ) {
-                            /*if ( is_array($importerSetting['config']) ) {
-                                $importer->init($importerSetting['config']);
-                            }*/
-                            //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->globals);
-                            $importer->init($this->globals, $this->request, $importerSetting['config']);
-                            $importer->run();
-                        }
-                        if (!$importerSetting['config']['continue']) {
-                            $break = true;
-                        }
+                    // if last importer is executed without error
+                    if ($importerKey === $last) {
+                       $this->globals['flashMessages']->enqueue(
+                            new \TYPO3\CMS\Core\Messaging\FlashMessage (
+                                $GLOBALS['LANG']->sL($this->globals['locallangPath'] . 'import.infoCompleted'),
+                                $GLOBALS['LANG']->sL($this->globals['locallangPath'] . 'import.infoCompletedHeader'),
+                                \TYPO3\CMS\Core\Messaging\FlashMessage::INFO,
+                                false
+                            )
+                        ); 
                     }
                 }
             }

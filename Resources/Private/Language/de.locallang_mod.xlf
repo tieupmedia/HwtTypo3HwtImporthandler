@@ -60,7 +60,7 @@
 				<target>Nichts zu konfigurieren. Starte jetzt den Import.</target>
 			</trans-unit>
 
-            <!-- messages -->
+            <!-- module messages -->
 			<trans-unit id="start.errorNoPreset" xml:space="preserve">
 				<target>Kein Preset ausgewählt!</target>
 			</trans-unit>
@@ -68,7 +68,12 @@
 				<target>Der Import wurde wegen eines Fehlers abgebrochen!</target>
 			</trans-unit>
             <trans-unit id="import.infoCompleted" xml:space="preserve">
-				<target>Import ausgeführt</target>
+				<target>Import vollständig ausgeführt</target>
+			</trans-unit>
+
+            <!-- demo importer messages -->
+            <trans-unit id="import.infoExecutedDemoNone" xml:space="preserve">
+				<target>Demo-None-Importer ausgeführt</target>
 			</trans-unit>
             <trans-unit id="import.infoImportedLocalFileHeader" xml:space="preserve">
 				<target>Die lokale Datei wurde ausgewählt: </target>

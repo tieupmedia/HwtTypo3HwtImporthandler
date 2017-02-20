@@ -60,7 +60,7 @@
 				<source>Nothing to configure. Start the import next.</source>
 			</trans-unit>
 
-            <!-- messages -->
+            <!-- module messages -->
 			<trans-unit id="start.errorNoPreset" xml:space="preserve">
 				<source>No configuration preset selected!</source>
 			</trans-unit>
@@ -68,7 +68,12 @@
 				<source>An error aborted the import!</source>
 			</trans-unit>
             <trans-unit id="import.infoCompleted" xml:space="preserve">
-				<source>Import completed</source>
+				<source>Import totally completed</source>
+			</trans-unit>
+
+            <!-- demo importer messages -->
+            <trans-unit id="import.infoExecutedDemoNone" xml:space="preserve">
+				<source>Demo none import executed</source>
 			</trans-unit>
             <trans-unit id="import.infoImportedLocalFileHeader" xml:space="preserve">
 				<source>The local file was selected: </source>

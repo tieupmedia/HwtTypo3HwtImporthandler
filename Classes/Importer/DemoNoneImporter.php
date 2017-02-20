@@ -45,13 +45,21 @@ class DemoNoneImporter extends AbstractImporter {
                 false
             )
         );
-        $this->globals['flashMessages']->enqueue(
-            new \TYPO3\CMS\Core\Messaging\FlashMessage (
-                $GLOBALS['LANG']->sL($this->globals['locallangPath'] . 'import.infoCompleted'),
-                $GLOBALS['LANG']->sL($this->globals['locallangPath'] . 'import.infoCompletedHeader'),
-                \TYPO3\CMS\Core\Messaging\FlashMessage::INFO,
-                false
-            )
-        );
+        
+        $success = true;
+        if ( $this->settings['error'] ) {
+            $success = false;
+        } else {
+            $this->globals['flashMessages']->enqueue(
+                new \TYPO3\CMS\Core\Messaging\FlashMessage (
+                    $GLOBALS['LANG']->sL($this->globals['locallangPath'] . 'import.infoExecutedDemoNone'),
+                    $GLOBALS['LANG']->sL($this->globals['locallangPath'] . 'import.infoExecutedDemoNone'),
+                    \TYPO3\CMS\Core\Messaging\FlashMessage::INFO,
+                    false
+                )
+            );
+        }
+
+        return $success;
     }
 }

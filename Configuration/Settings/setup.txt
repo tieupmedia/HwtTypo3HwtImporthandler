@@ -2,7 +2,8 @@
 module.tx_hwtimporthandler {
     settings {
         # set default preset for quickstart feature
-        quickstartPreset = demoNone
+        #quickstartPreset = demoNone
+        quickstartPreset = demoBackup
     }
     view {
         templateRootPaths.0 = EXT:hwt_importhandler/Resources/Private/Templates/
@@ -50,6 +51,24 @@ module.tx_hwtimporthandler.settings.preset.demoUpload {
         1.config {
             uploadPath = uploads/tx_hwtimporthandler/imports/
             localPath = uploads/tx_hwtimporthandler/imports/
+        }
+	}
+}
+
+module.tx_hwtimporthandler.settings.preset.demoBackup {
+	name = Demo Backup
+
+	configurator {
+	}
+
+	importer {
+        1.class = Hwt\HwtImporthandler\Importer\DbDumpImporter
+        1.config {
+            tablesToBackup = fe_users
+
+            # use this settings careful!
+            #abortOnMissingTable = 0
+            #pathToMysqlDump = /usr/local/bin/mysqldump
         }
 	}
 }

@@ -104,6 +104,23 @@
             <trans-unit id="import.noticeEmptyImport" xml:space="preserve">
 				<source>Noting to import in this demo preset.</source>
 			</trans-unit>
+
+            <!-- demo importer messages -->
+            <trans-unit id="importerDbDump.errorTableNotExist" xml:space="preserve">
+				<source>The table %s does not exist!</source>
+			</trans-unit>
+            <trans-unit id="importerDbDump.warningTableNotExist" xml:space="preserve">
+				<source>The table %s does not exist!</source>
+			</trans-unit>
+            <trans-unit id="importerDbDump.errorNoMysqldump" xml:space="preserve">
+				<source>The 'mysqldump' command wasn't found!</source>
+			</trans-unit>
+            <trans-unit id="importerDbDump.errorCreateMysqldump" xml:space="preserve">
+				<source>Couldn't create mysql dump in %s!</source>
+			</trans-unit>
+            <trans-unit id="importerDbDump.okCreateMysqldump" xml:space="preserve">
+				<source>Mysql dump created successful in %s.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

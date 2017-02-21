@@ -5,7 +5,7 @@ namespace Hwt\HwtImporthandler\Importer;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2016 Heiko Westermann <hwt3@gmx.de>
+ *  (c) 2016-2017 Heiko Westermann <hwt3@gmx.de>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -33,4 +33,12 @@ namespace Hwt\HwtImporthandler\Importer;
  * @author Heiko Westermann <hwt3@gmx.de>
  */
 
-abstract class AbstractImporter extends \Hwt\HwtImporthandler\Component\AbstractComponent {}
+abstract class AbstractImporter extends \Hwt\HwtImporthandler\Component\AbstractComponent {
+    protected $locallangPath;
+    protected $hasError=false;
+    
+    public function init(&$globals, $request, $settings=false) {
+        parent::init($globals, $request, $settings);
+        $this->locallangPath = $this->globals['locallangPath'];
+    }
+}

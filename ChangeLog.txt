@@ -1,3 +1,9 @@
+0.0.4-alpha 2017-02-21 Heiko Westermann <hwt3@gmx.de>
+    * Feature: Added handling to abort imports, when an importer don't return positive success flag. Added demo option to simulate this behaviour.
+    * Feature: Added messages in controller routine to display, if import was completed or aborted.
+    * Feature: Added quickstart option. Set default preset to configure in first view.
+	* Task: Clarified button text for import execution
+
 0.0.3-alpha 2016-12-21 Heiko Westermann <hwt3@gmx.de>
     * Task: Updated demo upload importer
     * Bugfix: Corrected LocalFileConfigurator input value, to be readable in importer

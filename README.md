@@ -9,5 +9,6 @@ This TYPO3 extension provides a backend module for import handling in TYPO3 >= 6
 - Setup import configuration and steps via TypoScript settings.
 - Define configuration options which can be used by backend users.
 - Define your import routine(s) with one or more steps
+- Define an import routine as default for quickstart in first view.
 - Easy extend/add your own configurators and importers with php
 - Namespaced Extbase extension

@@ -69,8 +69,8 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         );
 
         // if quickstart was configured
-        if ( $this->settings['defaultPreset'] ) {
-            $configVars = $this->configureAction($this->settings['defaultPreset']);
+        if ( $this->settings['quickstartPreset'] ) {
+            $configVars = $this->configureAction($this->settings['quickstartPreset']);
             // add values to view
             $this->view->assignMultiple($configVars);
         }

@@ -42,7 +42,7 @@
 				<source>Start</source>
 			</trans-unit>
             <trans-unit id="button.import" xml:space="preserve">
-				<source>Start Import</source>
+				<source>Execute Import</source>
 			</trans-unit>
             <trans-unit id="button.abort" xml:space="preserve">
 				<source>Abort import</source>

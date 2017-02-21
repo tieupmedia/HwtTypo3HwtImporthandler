@@ -42,7 +42,7 @@
 				<target>Starten</target>
 			</trans-unit>
             <trans-unit id="button.import" xml:space="preserve">
-				<target>Import starten</target>
+				<target>Import ausführen</target>
 			</trans-unit>
             <trans-unit id="button.abort" xml:space="preserve">
 				<target>Import abbrechen</target>

@@ -55,6 +55,8 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->settings = $this->configuration['settings'];
     }
 
+
+
     /**
      * action
      *
@@ -80,6 +82,8 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'presets' => $this->getPresets()
         ));
     }
+
+
 
     /**
      * action
@@ -162,6 +166,8 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         }
     }
  
+
+
     /**
      * action
      *
@@ -260,7 +266,12 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                                 \TYPO3\CMS\Core\Messaging\FlashMessage::INFO,
                                 false
                             )
-                        ); 
+                        );
+
+                        // Log succes to system log
+                        $details = 'EXT: hwt_importhandler: User %s did import "%s" successful.';
+                        $data = array($GLOBALS['BE_USER']->user['username'], $preset);
+                        $GLOBALS['BE_USER']->writelog(4, 2, 0, 0, $details, $data, $table=false, $recuid=false, $recpid=false, $event_pid=false, $NEWid=false);
                     }
                 }
             }
@@ -281,6 +292,13 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             );
         }
 
+        // if error occured
+        if ($hasError) {
+                // Log error to system log
+            $details = 'EXT: hwt_importhandler: Error when user %s executed import "%s"';
+            $data = array($GLOBALS['BE_USER']->user['username'], $preset);
+            $GLOBALS['BE_USER']->writelog(4, 2, 1, 0, $details, $data, $table='', $recuid=false, $recpid=false, $event_pid=false, $NEWid=false);
+        }
 
         // add values to view
         $this->view->assignMultiple(array(

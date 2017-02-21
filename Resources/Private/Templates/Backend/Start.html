@@ -3,19 +3,35 @@
 <f:section name="main">
     <h1><f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:startHeader" /></h1>
     <p>
-        <b>
-            <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.start" />
-        </b>
-        <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.configure" />
+        <f:if condition="{preset}">
+            <f:then>
+                <b>
+                    <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.quickstart" />
+                </b>
+            </f:then>
+            <f:else>
+                <b>
+                    <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.start" />
+                </b>
+                <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.configure" />
+            </f:else>
+        </f:if>
+
         <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.import" />
     </p>
     <f:flashMessages renderMode="div" />
     
     <f:if condition="{preset}">
-        <h2><f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:startSubheaderQuickstart" /></h2>
+        <br />
+        <h3>
+            <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:startSubheaderQuickstart" />
+        </h3>
         <f:render partial="Backend/Configure/ConfigureForm" arguments="{_all}" />
         <br /><br />
-        <h2><f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:startSubheaderNormal" /></h2>
+
+        <h3>
+            <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:startSubheaderNormal" />
+        </h3>
     </f:if>
 
     <f:form enctype="multipart/form-data" method="post" controller="Backend" action="configure">

@@ -33,6 +33,9 @@
             <trans-unit id="step.configure" xml:space="preserve">
 				<source>Configure &gt;</source>
 			</trans-unit>
+            <trans-unit id="step.quickstart" xml:space="preserve">
+				<source>Start / Configure &gt;</source>
+			</trans-unit>
             <trans-unit id="step.import" xml:space="preserve">
 				<source>Import</source>
 			</trans-unit>

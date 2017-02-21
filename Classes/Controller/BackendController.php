@@ -5,7 +5,7 @@ namespace Hwt\HwtImporthandler\Controller;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2016 Heiko Westermann <hwt3@gmx.de>
+ *  (c) 2016-2017 Heiko Westermann <hwt3@gmx.de>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is

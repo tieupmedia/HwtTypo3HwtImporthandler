@@ -68,6 +68,12 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             //'settings' => $this->settings,
         );
 
+        // if quickstart was configured
+        if ( $this->settings['defaultPreset'] ) {
+            $configVars = $this->configureAction($this->settings['defaultPreset']);
+            // add values to view
+            $this->view->assignMultiple($configVars);
+        }
 
         // add values to view
         $this->view->assignMultiple(array(
@@ -78,9 +84,10 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     /**
      * action
      *
+     * @param string $defaultPreset
      * @return void
      */
-    public function configureAction() {
+    public function configureAction($defaultPreset=false) {
         $this->globals = array(
             'flashMessages' => $this->controllerContext->getFlashMessageQueue(),
             'locallangPath' => $this->locallangPath,
@@ -92,11 +99,18 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $hasError = false;
         $configurations = array();
 
-        if ($this->request->hasArgument('preset') && $this->request->getArgument('preset')) {
-            $preset = $this->request->getArgument('preset');
+        if ( ($this->request->hasArgument('preset') && ($preset = $this->request->getArgument('preset')) ) || 
+             $defaultPreset 
+           ) {
+            if ( $defaultPreset ) {
+                $preset = $defaultPreset;
+            }
+            //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($preset);
 
             // run all configurators
-            if (is_array($this->settings['preset'][$preset]['configurator'])) {
+            if ( is_array($this->settings['preset'][$preset]) &&
+                 is_array($this->settings['preset'][$preset]['configurator'])
+               ) {
                 foreach ($this->settings['preset'][$preset]['configurator'] as $configuratorSetting) {
                     $configuratorClass = $configuratorSetting['class'];
 
@@ -110,12 +124,22 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                     }
                     //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($configurator);
                 }
+            } else if ( !is_array($this->settings['preset'][$preset]) ) {
+                $this->controllerContext->getFlashMessageQueue()->enqueue(
+                    new \TYPO3\CMS\Core\Messaging\FlashMessage (
+                        $GLOBALS['LANG']->sL($this->locallangPath . 'configure.errorPresetNotExist'),
+                        $GLOBALS['LANG']->sL($this->locallangPath . 'configure.errorPresetNotExistHeader'),
+                        \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR,
+                        false
+                    )
+                );
+                $hasError = true;  
             }
         } else {
             $this->controllerContext->getFlashMessageQueue()->enqueue(
                 new \TYPO3\CMS\Core\Messaging\FlashMessage (
-                    $GLOBALS['LANG']->sL($this->locallangPath . 'start.errorNoPreset'),
-                    $GLOBALS['LANG']->sL($this->locallangPath . 'start.errorNoPresetHeader'),
+                    $GLOBALS['LANG']->sL($this->locallangPath . 'configure.errorPresetNotSelected'),
+                    $GLOBALS['LANG']->sL($this->locallangPath . 'configure.errorPresetNotSelectedHeader'),
                     \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR,
                     false
                 )
@@ -125,11 +149,17 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
 
         // add values to view
-        $this->view->assignMultiple(array(
+        $viewVariables = array(
             'preset' => $preset,
             'hasError' => $hasError,
             'configurations' => $configurations
-        ));
+        );
+        
+        if ( !$defaultPreset ) {
+            $this->view->assignMultiple($viewVariables);
+        } else {
+            return $viewVariables;
+        }
     }
  
     /**

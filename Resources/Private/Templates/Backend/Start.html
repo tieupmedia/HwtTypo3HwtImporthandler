@@ -10,6 +10,13 @@
         <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.import" />
     </p>
     <f:flashMessages renderMode="div" />
+    
+    <f:if condition="{preset}">
+        <h2><f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:startSubheaderQuickstart" /></h2>
+        <f:render partial="Backend/Configure/ConfigureForm" arguments="{_all}" />
+        <br /><br />
+        <h2><f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:startSubheaderNormal" /></h2>
+    </f:if>
 
     <f:form enctype="multipart/form-data" method="post" controller="Backend" action="configure">
         <div class="divider"></div><br />

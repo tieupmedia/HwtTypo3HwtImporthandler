@@ -1,6 +1,8 @@
 # General module settings
 module.tx_hwtimporthandler {
     settings {
+        # set default preset for quickstart feature
+        defaultPreset = demoNone
     }
     view {
         templateRootPaths.0 = EXT:hwt_importhandler/Resources/Private/Templates/

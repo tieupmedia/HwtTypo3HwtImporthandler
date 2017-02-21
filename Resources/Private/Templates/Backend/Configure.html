@@ -11,29 +11,5 @@
     </p>
     <f:flashMessages renderMode="div" />
 
-    <f:form enctype="multipart/form-data" method="post" controller="Backend" action="import">
-        <f:form.hidden name="preset" value="{preset}" />
-
-        <f:if condition="{configurations}" >
-            <f:then>
-                <f:for each="{configurations}" as="configuration">
-                    <div class="divider"></div><br />
-                    <f:render partial="Backend/Configurator/{configuration.partial}" arguments="{config: configuration}" />
-                    <br />
-                </f:for>
-            </f:then>
-            <f:else>
-                <f:if condition="{hasError}!=1">
-                    <div class="divider"></div><br />
-                    <f:render partial="Backend/Configurator/None" />
-                    <br /><br />
-                </f:if>
-            </f:else>
-        </f:if>
-        <div class="divider"></div><br />
-        <input type="submit" name="tx_hwtimporthandler_web_hwtimporthandlertxhwtimporthandlerm1[import]" value="{f:translate(key: 'LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:button.import')}" {f:if(condition:'{hasError}==1', then:'disabled="disabled"')} />
-        <f:link.action action="start">
-            <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:button.abort" />
-        </f:link.action>
-    </f:form>
+    <f:render partial="Backend/Configure/ConfigureForm" arguments="{_all}" />
 </f:section>

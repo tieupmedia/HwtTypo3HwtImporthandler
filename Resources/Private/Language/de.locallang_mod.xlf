@@ -18,6 +18,14 @@
 				<target>Daten importieren</target>
 			</trans-unit>
 
+            <!-- subheaders -->
+			<trans-unit id="startSubheaderNormal" xml:space="preserve">
+				<target>Auswahl anderer Importe</target>
+			</trans-unit>
+			<trans-unit id="startSubheaderQuickstart" xml:space="preserve">
+				<target>Quickstart-Konfiguration</target>
+			</trans-unit>
+
             <!-- steps -->
             <trans-unit id="step.start" xml:space="preserve">
 				<target>Start &gt;</target>
@@ -61,8 +69,11 @@
 			</trans-unit>
 
             <!-- module messages -->
-			<trans-unit id="start.errorNoPreset" xml:space="preserve">
+			<trans-unit id="configure.errorPresetNotSelected" xml:space="preserve">
 				<target>Kein Preset ausgewählt!</target>
+			</trans-unit>
+			<trans-unit id="configure.errorPresetNotExist" xml:space="preserve">
+				<target>(Quickstart-)Preset existiert nicht!</target>
 			</trans-unit>
             <trans-unit id="import.errorAborted" xml:space="preserve">
 				<target>Der Import wurde wegen eines Fehlers abgebrochen!</target>

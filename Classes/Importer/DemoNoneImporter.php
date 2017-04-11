@@ -53,7 +53,7 @@ class DemoNoneImporter extends AbstractImporter {
             $this->globals['flashMessages']->enqueue(
                 new \TYPO3\CMS\Core\Messaging\FlashMessage (
                     $GLOBALS['LANG']->sL($this->globals['locallangPath'] . 'import.infoExecutedDemoNone'),
-                    $GLOBALS['LANG']->sL($this->globals['locallangPath'] . 'import.infoExecutedDemoNone'),
+                    $GLOBALS['LANG']->sL($this->globals['locallangPath'] . 'import.infoExecutedDemoNoneHeader'),
                     \TYPO3\CMS\Core\Messaging\FlashMessage::INFO,
                     false
                 )

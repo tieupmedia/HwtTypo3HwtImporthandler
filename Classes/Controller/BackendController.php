@@ -88,7 +88,7 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     /**
      * action
      *
-     * @param string $defaultPreset
+     * @param boolean|string $defaultPreset
      * @return void
      */
     public function configureAction($defaultPreset=false) {
@@ -321,7 +321,7 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $preset = new \stdClass();
             $preset->key = $key;
             $preset->name = $config['name'];
-            $presets[] = $preset;
+            $presets[$key] = $preset;
         }
         return $presets;
     }

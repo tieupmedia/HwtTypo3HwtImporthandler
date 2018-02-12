@@ -24,8 +24,9 @@
     <f:if condition="{preset}">
         <br />
         <h3>
-            <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:startSubheaderQuickstart" />
+            <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:startSubheaderQuickstart" arguments="{0: '{presets.{preset}.name}'}" />
         </h3>
+
         <f:render partial="Backend/Configure/ConfigureForm" arguments="{_all}" />
         <br /><br />
 

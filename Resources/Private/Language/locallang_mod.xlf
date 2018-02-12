@@ -23,7 +23,7 @@
 				<source>Select other import</source>
 			</trans-unit>
 			<trans-unit id="startSubheaderQuickstart" xml:space="preserve">
-				<source>Configure Quickstart</source>
+				<source>Configure Quickstart for "%s"</source>
 			</trans-unit>
 
             <!-- steps -->

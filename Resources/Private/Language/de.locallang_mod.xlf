@@ -23,7 +23,7 @@
 				<target>Auswahl anderer Importe</target>
 			</trans-unit>
 			<trans-unit id="startSubheaderQuickstart" xml:space="preserve">
-				<target>Quickstart-Konfiguration</target>
+				<target>Quickstart-Konfiguration für "%s"</target>
 			</trans-unit>
 
             <!-- steps -->

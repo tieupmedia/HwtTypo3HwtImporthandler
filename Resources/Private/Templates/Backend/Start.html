@@ -19,7 +19,7 @@
 
         <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.import" />
     </p>
-    <f:flashMessages renderMode="div" />
+    <f:flashMessages />
     
     <f:if condition="{preset}">
         <br />
@@ -45,6 +45,6 @@
         </div>
 
         <br /><div class="divider"></div><br />
-        <f:form.submit name="configure" value="{f:translate(key: 'LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:button.start')}" />
+        <f:form.submit name="configure" class="btn btn-default" value="{f:translate(key: 'LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:button.start')}" />
     </f:form>
 </f:section>

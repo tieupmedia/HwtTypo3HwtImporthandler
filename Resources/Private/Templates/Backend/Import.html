@@ -9,7 +9,7 @@
             <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:step.import" />
         </b>
     </p>
-    <f:flashMessages renderMode="div" />
+    <f:flashMessages />
 
     <f:if condition="{continue}">
         <f:then>
@@ -17,12 +17,12 @@
             <f:form enctype="multipart/form-data" method="post" controller="Backend" action="import">
                 <f:form.hidden name="preset" value="{preset}" />
                 <f:form.hidden name="importer" value="{continue}" />
-                <f:form.submit name="continue" value="{f:translate(key: 'LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:button.continue')}" />
+                <f:form.submit name="continue" class="btn btn-default" value="{f:translate(key: 'LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:button.continue')}" />
             </f:form>
         </f:then>
         <f:else>
             <div class="divider"></div><br />
-            <f:link.action action="start" class="t3-button">
+            <f:link.action action="start" class="btn btn-default">
                 <f:translate key="LLL:EXT:hwt_importhandler/Resources/Private/Language/locallang_mod.xlf:button.restart" />
             </f:link.action>
         </f:else>

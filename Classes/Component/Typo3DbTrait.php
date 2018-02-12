@@ -1,11 +1,11 @@
 <?php
 
-namespace Hwt\HwtImporthandler\Importer;
+namespace Hwt\HwtImporthandler\Component;
 
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2016-2017 Heiko Westermann <hwt3@gmx.de>
+ *  (c) 2017 Heiko Westermann <hwt3@gmx.de>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -26,22 +26,17 @@ namespace Hwt\HwtImporthandler\Importer;
  ***************************************************************/
 
 /**
- * Abstract importer
+ * Abstract component
  *
  * @package TYPO3
  * @subpackage tx_hwtimporthandler
  * @author Heiko Westermann <hwt3@gmx.de>
  */
 
-abstract class AbstractImporter extends \Hwt\HwtImporthandler\Component\AbstractComponent {
-    use \Hwt\HwtImporthandler\Component\Typo3DbTrait;
+trait Typo3DbTrait {
+    protected $typo3db;
 
-    protected $locallangPath;
-    protected $hasError=false;
-    
-    public function init(&$globals, $request, $settings=false) {
-        parent::init($globals, $request, $settings);
-        $this->initTypo3db();
-        $this->locallangPath = $this->globals['locallangPath'];
+    public function initTypo3db() {
+        $this->typo3db = $GLOBALS['TYPO3_DB'];
     }
 }

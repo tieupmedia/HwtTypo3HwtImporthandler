@@ -1,6 +1,6 @@
 <?php
 
-namespace Hwt\HwtImporthandler\Importer;
+namespace Hwt\HwtImporthandler\Importer\MySql;
 
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -29,7 +29,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  ***************************************************************/
 
 /**
- * Abstract importer
+ * Database dump importer
  *
  * @package TYPO3
  * @subpackage tx_hwtimporthandler
@@ -37,7 +37,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 
 
-class DbDumpImporter extends AbstractImporter {
+class DbDumpImporter extends \Hwt\HwtImporthandler\Importer\AbstractImporter {
 
     //protected $backupFileName;
     //protected $backupDirectory;
@@ -262,7 +262,7 @@ class DbDumpImporter extends AbstractImporter {
 
 
     /**
-     * @param string $backupFilename  The name for the sql backup file
+     * @return string $backupFilename  The name for the sql backup file
      */
     protected function getBackupFileName() {
         return 'dbdumpimporter' . '_' .

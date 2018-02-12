@@ -62,7 +62,7 @@ module.tx_hwtimporthandler.settings.preset.demoBackup {
 	}
 
 	importer {
-        1.class = Hwt\HwtImporthandler\Importer\DbDumpImporter
+        1.class = Hwt\HwtImporthandler\Importer\MySql\DbDumpImporter
         1.config {
             tablesToBackup = fe_users
 

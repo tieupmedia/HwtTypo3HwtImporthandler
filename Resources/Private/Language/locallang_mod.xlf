@@ -85,6 +85,8 @@
 				<source>Import totally completed</source>
 			</trans-unit>
 
+
+
             <!-- demo importer messages -->
             <trans-unit id="import.infoExecutedDemoNone" xml:space="preserve">
 				<source>Demo none import executed</source>
@@ -105,21 +107,67 @@
 				<source>Noting to import in this demo preset.</source>
 			</trans-unit>
 
+
             <!-- demo importer messages -->
             <trans-unit id="importerDbDump.errorTableNotExist" xml:space="preserve">
 				<source>The table %s does not exist!</source>
 			</trans-unit>
+            <trans-unit id="importerDbDump.errorTableNotExistHeader" xml:space="preserve">
+				<source>Table missing</source>
+			</trans-unit>
             <trans-unit id="importerDbDump.warningTableNotExist" xml:space="preserve">
 				<source>The table %s does not exist!</source>
+			</trans-unit>
+            <trans-unit id="importerDbDump.warningTableNotExistHeader" xml:space="preserve">
+				<source>Table missing</source>
 			</trans-unit>
             <trans-unit id="importerDbDump.errorNoMysqldump" xml:space="preserve">
 				<source>The 'mysqldump' command wasn't found!</source>
 			</trans-unit>
+            <trans-unit id="importerDbDump.errorNoMysqldumpHeader" xml:space="preserve">
+				<source>'mysqldump' missing</source>
+			</trans-unit>
             <trans-unit id="importerDbDump.errorCreateMysqldump" xml:space="preserve">
 				<source>Couldn't create mysql dump in %s!</source>
 			</trans-unit>
+            <trans-unit id="importerDbDump.errorCreateMysqldumpHeader" xml:space="preserve">
+				<source>MySql dump failed</source>
+			</trans-unit>
             <trans-unit id="importerDbDump.okCreateMysqldump" xml:space="preserve">
 				<source>Mysql dump created successful in %s.</source>
+			</trans-unit>
+            <trans-unit id="importerDbDump.okCreateMysqldumpHeader" xml:space="preserve">
+				<source>Mysql dump done</source>
+			</trans-unit>
+
+
+            <!-- db table backup importer messages -->
+            <trans-unit id="importerDbTableBackup.okCreateBackup" xml:space="preserve">
+				<source>All given tables were backuped.</source>
+			</trans-unit>
+            <trans-unit id="importerDbTableBackup.okCreateBackupHeader" xml:space="preserve">
+				<source>Table backup done</source>
+			</trans-unit>
+            <trans-unit id="importerDbTableBackup.errorCreateBackup" xml:space="preserve">
+				<source>The table backup failed on copying table "%s"!</source>
+			</trans-unit>
+            <trans-unit id="importerDbTableBackup.errorCreateBackupHeader" xml:space="preserve">
+				<source>Table backup failed</source>
+			</trans-unit>
+
+
+            <!-- db table truncate importer messages -->
+            <trans-unit id="importerDbTableTruncate.okTruncate" xml:space="preserve">
+				<source>All given tables were cleared.</source>
+			</trans-unit>
+            <trans-unit id="importerDbTableTruncate.okTruncateHeader" xml:space="preserve">
+				<source>Table truncate done</source>
+			</trans-unit>
+            <trans-unit id="importerDbTableTruncate.errorTruncate" xml:space="preserve">
+				<source>The table truncate failed on clearing table "%s"!</source>
+			</trans-unit>
+            <trans-unit id="importerDbTableTruncate.errorTruncateHeader" xml:space="preserve">
+				<source>Table truncate failed</source>
 			</trans-unit>
 		</body>
 	</file>

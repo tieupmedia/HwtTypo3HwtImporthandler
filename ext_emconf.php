@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'HWT Importhandler',
-	'description' => 'Universal importer module for universal and flexible imports.',
+	'description' => 'TYPO3 backend module to setup universal and flexible import routines.',
 	'category' => 'plugin',
 	'author' => 'Heiko Westermann',
 	'author_email' => 'hwt3@gmx.de',
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '0.0.6',
+	'version' => '0.0.7',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '7.6.0-8.7.99',

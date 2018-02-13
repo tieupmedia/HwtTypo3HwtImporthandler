@@ -1,3 +1,7 @@
+2018-02-13 Heiko Westermann <hwt3@gmx.de>
+    * Version 0.1.0-alpha - Compatibility and maintenance release
+    * [BUGFIX] Corrected version number
+
 2018-02-12 Heiko Westermann <hwt3@gmx.de>
     * Version 0.1.0-alpha - Compatibility and maintenance release
     * [TASK][BUGFIX] Compatibility to TYPO3 7.x and 8.x (LTS-Versions).

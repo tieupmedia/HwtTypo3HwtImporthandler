@@ -93,11 +93,11 @@ class DbTableTruncateImporter extends \Hwt\HwtImporthandler\Importer\AbstractImp
 
         $dbTables = explode(',', $dbTables);
         foreach($dbTables as $table) {
-            $result = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
-                '*',
-                $table,
-                ''
-            );
+            $schemaManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)
+                ->getConnectionForTable($table)
+                ->getSchemaManager();
+
+            $result = $schemaManager->tablesExist(array($table));
 
             /*
              * Error handling

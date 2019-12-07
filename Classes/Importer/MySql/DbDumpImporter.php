@@ -108,11 +108,12 @@ class DbDumpImporter extends \Hwt\HwtImporthandler\Importer\AbstractImporter {
 
         $dbTables = explode(',', $dbTables);
         foreach($dbTables as $table) {
-            $result = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
-                '*',
-                $table,
-                ''
-            );
+            $queryBuilder = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)
+                ->getConnectionForTable($table)
+                ->createQueryBuilder();
+            
+            $statement = $queryBuilder->select('uid')->from($table);
+            $result = $statement->fetchAll();
 
             /*
              * Error handling

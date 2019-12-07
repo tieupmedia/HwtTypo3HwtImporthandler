@@ -1,0 +1,52 @@
+{
+    "name": "tieupmedia/hwt_importhandler",
+    "type": "typo3-cms-extension",
+    "version": "0.1.0",
+    "description": "TYPO3 backend module to setup universal and flexible import routines (since 6.2, estab. 2016) Development on https://github.com/tieupmedia/HwtTypo3HwtImporthandler",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://composer.typo3.org/"
+        }
+    ],
+    "keywords": [
+        "TYPO3 CMS",
+        "Extbase",
+        "Fluid",
+        "Import",
+        "Module",
+        "Backend",
+        "universal",
+        "flexible"
+    ],
+    "authors": [
+        {
+            "name": "tie-up media",
+            "email": "hwt3@gmx.de",
+            "role": "Developer",
+            "homepage": "https://github.com/tieupmedia/"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "typo3/cms-core": "~7.6.0||>=8.0.0 <=8.7.99"
+    },
+    "replace": {
+        "typo3-ter/hwt-importhandler": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hwt\\HwtImporthandler\\": "Classes"
+        }
+    },
+    "homepage": "https://github.com/tieupmedia/",
+    "license": "GPL-2.0-or-later",
+    "support": {
+        "issues": "https://github.com/tieupmedia/HwtTypo3HwtImporthandler/issues/"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "hwt_importhandler"
+        }
+    }
+}

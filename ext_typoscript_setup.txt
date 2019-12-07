@@ -1,1 +1,1 @@
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:hwt_importhandler/Configuration/Settings/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:hwt_importhandler/Configuration/Settings/setup.typoscript">

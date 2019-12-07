@@ -11,8 +11,8 @@
 ########################################################################
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'HWT Importhandler',
-	'description' => 'TYPO3 backend module to setup universal and flexible import routines.',
+	'title' => 'Flexible Import Handler',
+	'description' => 'TYPO3 backend module to setup universal and flexible import routines (since 6.2, estab. 2016)',
 	'category' => 'plugin',
 	'author' => 'Heiko Westermann',
 	'author_email' => 'hwt3@gmx.de',
